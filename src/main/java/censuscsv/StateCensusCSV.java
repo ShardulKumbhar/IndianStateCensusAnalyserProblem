@@ -55,4 +55,10 @@ public class StateCensusCSV {
 		this.density = density;
 	}
 
+	@Override
+	public String toString() {
+		return "StateCensusCSV [state=" + state + ", pop=" + pop + ", area=" + area + ", density=" + density + "]";
+	}
+
+	
 }
