@@ -5,13 +5,13 @@ public class CensusAnalyserException extends Exception
 	/*
 	 * 1.enum class constant
 	 */
-    enum ExceptionType
+  public enum ExceptionType
     {
         CENSUS_FILE_PROBLEM,
-        INVALID_FILE_TYPE_OR_DELIMITER_OR_HEADER
+        INVALID_FILE_TYPE_OR_DELIMITER_OR_HEADER,
     }
 
-    ExceptionType type;
+    public ExceptionType type;
     public CensusAnalyserException(String message, ExceptionType type)
     {
         super(message);
