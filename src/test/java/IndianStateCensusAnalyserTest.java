@@ -26,7 +26,8 @@ public class IndianStateCensusAnalyserTest {
 				+ "\\IndianStateCensusAnalyserProblem\\IndianStateCensusAnalyserProblem\\src\\Resource\\IndiaStateCensusData.txt";
 	 private static final String INVALID_DELIMITER_FILE_PATH =  "C:\\Users\\shard\\eclipse-workspace\\Advance java"
 				+ "\\IndianStateCensusAnalyserProblem\\IndianStateCensusAnalyserProblem\\src\\Resource\\invalidDelimitersIndiaStateCensusData.csv";
-	 
+	 private static final String INVALID_HEADER_FILE_PATH =  "C:\\Users\\shard\\eclipse-workspace\\Advance java"
+				+ "\\IndianStateCensusAnalyserProblem\\IndianStateCensusAnalyserProblem\\src\\Resource\\invalidHeadersIndiaStateCensusData.csv";
 	 
 		// Test Case 1.1
 		@Test
@@ -81,6 +82,24 @@ public class IndianStateCensusAnalyserTest {
 	        try
 	        {
 	            censusAnalyser.loadIndiaCensusData(INVALID_DELIMITER_FILE_PATH);
+	        }
+	        catch (CensusAnalyserException e)
+	        {
+	            Assert.assertNotSame(CensusAnalyserException.ExceptionType.INVALID_FILE_TYPE_OR_DELIMITER_OR_HEADER, e.type);
+	        }
+	    }
+
+
+	    //Test Case 1.5
+	    @Test
+	    public void givenIndianCensusDataCSVFile_whenWithWrongHeaders_shouldThrowException()
+	    {
+	        CensusAnalyzer censusAnalyser = new CensusAnalyzer();
+	        ExpectedException exceptionRule = ExpectedException.none();
+	        exceptionRule.expect(CensusAnalyserException.class);
+	        try
+	        {
+	            censusAnalyser.loadIndiaCensusData(INVALID_HEADER_FILE_PATH);
 	        }
 	        catch (CensusAnalyserException e)
 	        {
