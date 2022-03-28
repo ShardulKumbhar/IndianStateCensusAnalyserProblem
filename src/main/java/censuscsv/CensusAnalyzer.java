@@ -78,7 +78,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 				        try
 				        {
 				            Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
-				            CsvToBeanBuilder<IndiaStateCodeCSV> csvToBeanBuilder = new CsvToBeanBuilder<>(reader);
+				            CsvToBeanBuilder<IndiaStateCodeCSV> csvToBeanBuilder = new CsvToBeanBuilder<IndiaStateCodeCSV>(reader);
 				            csvToBeanBuilder.withType(IndiaStateCodeCSV.class);
 				            csvToBeanBuilder.withIgnoreLeadingWhiteSpace(true);
 				            CsvToBean<IndiaStateCodeCSV> csvToBean = csvToBeanBuilder.build();

@@ -16,7 +16,7 @@ import censuscsv.StateCensusCSV;
 
 public class IndianStateCensusAnalyserTest {
     /**
-     * File path
+     * File path INDIAN State CENSUS 
      */
 	 private static final String INDIA_CENSUS_CSV_FILE_PATH= "C:\\Users\\shard\\eclipse-workspace\\Advance java"
 			+ "\\IndianStateCensusAnalyserProblem\\IndianStateCensusAnalyserProblem\\src\\Resource\\IndiaStateCensusData.csv";
@@ -28,6 +28,11 @@ public class IndianStateCensusAnalyserTest {
 				+ "\\IndianStateCensusAnalyserProblem\\IndianStateCensusAnalyserProblem\\src\\Resource\\invalidDelimitersIndiaStateCensusData.csv";
 	 private static final String INVALID_HEADER_FILE_PATH =  "C:\\Users\\shard\\eclipse-workspace\\Advance java"
 				+ "\\IndianStateCensusAnalyserProblem\\IndianStateCensusAnalyserProblem\\src\\Resource\\invalidHeadersIndiaStateCensusData.csv";
+	 
+	 
+	 private static final String INDIA_STATE_CODE_CSV_FILE_PATH = "C:\\Users\\shard\\eclipse-workspace\\Advance java"
+				+ "\\IndianStateCensusAnalyserProblem\\IndianStateCensusAnalyserProblem\\src\\Resource\\IndiaStateCode.csv";
+	 
 	 
 		// Test Case 1.1
 		@Test
@@ -105,5 +110,18 @@ public class IndianStateCensusAnalyserTest {
 	        {
 	            Assert.assertNotSame(CensusAnalyserException.ExceptionType.INVALID_FILE_TYPE_OR_DELIMITER_OR_HEADER, e.type);
 	        }
+	    }
+	    
+	    //Test Case 2.1
+	    @Test
+	    public void givenIndiaStateCodeCSVFileReturnsCorrectRecords()
+	    {
+	        try
+	        {
+	            CensusAnalyzer censusAnalyser = new CensusAnalyzer();
+	            int numOfRecords = censusAnalyser.loadIndiaStateCode(INDIA_STATE_CODE_CSV_FILE_PATH);
+	            Assert.assertEquals(37,numOfRecords);
+	        }
+	        catch (CensusAnalyserException e) { }
 	    }
 	}
