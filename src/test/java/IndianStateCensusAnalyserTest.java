@@ -22,7 +22,9 @@ public class IndianStateCensusAnalyserTest {
 			+ "\\IndianStateCensusAnalyserProblem\\IndianStateCensusAnalyserProblem\\src\\Resource\\IndiaStateCensusData.csv";
 	 private static final String WRONG_CSV_FILE_PATH = "C:\\Users\\shard\\eclipse-workspace\\Advance java"
 				+ "\\IndianStateCensusAnalyserProblem\\IndianStateCensusAnalyserProblem\\src\\Resource\\IndiaStateCensusData.csv";
-	 
+
+	 private static final String WRONG_CSV_FILE_TYPE_PATH = "C:\\Users\\shard\\eclipse-workspace\\Advance java"
+				+ "\\IndianStateCensusAnalyserProblem\\IndianStateCensusAnalyserProblem\\src\\Resource\\IndiaStateCensusData.txt";
 	   
 	 
 	 
@@ -51,4 +53,20 @@ public class IndianStateCensusAnalyserTest {
 			}
 		}
 
+		 //Test Case 1.3
+	    @Test
+	    public void givenIndianCensusDataCSVFile_whenWithWrongFileType_shouldThrowException()
+	    {
+	        CensusAnalyzer censusAnalyser = new CensusAnalyzer();
+	        ExpectedException exceptionRule =  ExpectedException.none();
+	        exceptionRule.expect(CensusAnalyserException.class);
+	        try
+	        {
+	            censusAnalyser.loadIndiaCensusData(WRONG_CSV_FILE_TYPE_PATH);
+	        }
+	        catch (CensusAnalyserException e)
+	        {
+	            Assert.assertNotSame(CensusAnalyserException.ExceptionType.INVALID_FILE_TYPE_OR_DELIMITER_OR_HEADER, e.type);
+	        }
+	    }
 	}
